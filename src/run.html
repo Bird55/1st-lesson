@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <script type="text/javascript">
+        function obj(id) {return document.getElementById(id);}
+    </script>
+    <meta charset="UTF-8">
+    <title>Вводный урок</title>
+</head>
+<body>
+<canvas id="iCanvas"
+        width="350"
+        height="200"
+        style="border: 1px solid;
+              position: fixed;
+              left: 0px; top: 0px">
+
+</canvas>
+<input type="number" id="iInterval"
+       value="10"
+       onchange="newInterval();"
+       width="450"
+       height="200"
+       style="border: 1px solid;
+              position: fixed;
+              left: 355px; top: 0px">
+</input>
+
+
+<script type="text/javascript">
+// this is JavaScript
+
+interval = 10;
+
+var iCanvas = obj('iCanvas');
+var iCxt = iCanvas.getContext('2d');
+
+function newInterval() {
+    interval = obj('iInterval').value;
+}
+
+renderRect = function(){
+    if (interval != 0) {
+        var x=Math.random()*iCanvas.width;
+        var y=Math.random()*iCanvas.height;
+        iCxt.clearRect(0, 0, iCanvas.width, iCanvas.height);
+        iCxt.fillRect(x, y, 150, 100);
+    }
+    setTimeout(function() {renderRect();}, interval);
+}
+
+renderRect();
+
+// end of script
+</script>
+</body>
+</html>
